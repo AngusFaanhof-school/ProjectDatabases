@@ -21,7 +21,8 @@ class Student:
         Postal_Code = StringVar()
         Grades = StringVar()
         Nationality = StringVar()
-
+        City = StringVar()
+        Email = StringVar()
 
         #Creates frame and some buttons,labels  for the main window etc. 
         Basic_Frame = Frame(self.root, bg = "#0000ff")
