@@ -13,13 +13,14 @@ class Student:
         self.root.config(bg = "#0000ff")
 
         #Creating variables and assigning them an empty value
-        Firstname = StringVar()
-        Surname = StringVar()
+        first_name = StringVar()
+        last_name = StringVar()
         Dob = StringVar()
         Age = StringVar()
-        Mobile = StringVar()
-        Post_Code = StringVar()
+        Phone = StringVar()
+        postal_Code = StringVar()
         Grades = StringVar()
+        Nationality = StringVar()
 
 
         #Creates frame and some buttons,labels  for the main window etc. 
