@@ -13,12 +13,12 @@ class Student:
         self.root.config(bg = "#0000ff")
 
         #Creating variables and assigning them an empty value
-        first_name = StringVar()
-        last_name = StringVar()
+        First_name = StringVar()
+        Last_name = StringVar()
         Dob = StringVar()
         Age = StringVar()
         Phone = StringVar()
-        postal_Code = StringVar()
+        Postal_Code = StringVar()
         Grades = StringVar()
         Nationality = StringVar()
 
