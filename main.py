@@ -45,6 +45,8 @@ class Student:
         RightDataFrame = LabelFrame(DataFrame, bd = 1, width = 450, height =300, padx =31, pady=3, relief = GROOVE, bg = "white", font = ('arial', 20, 'bold'), text = "student details\n")
         RightDataFrame.pack(side = RIGHT)
 
+#Gonna  the buttons here for the main window to fit into the frames. The frame is my basic outline for where i want to place my buttons and listboxes and widgets etc.
+
 
         
 
