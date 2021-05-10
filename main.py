@@ -107,8 +107,12 @@ class Student:
 
 
 
+
+
+        self.btnAddDate = Button(ButtonFrame, font = ('arial', 20, 'bold'), text = "Add New", height = 1,width = 10 ,bd = 4)
+        self.btnAddDate.grid(row = 0, column = 0 )
         
-        # Creating Buttons.
+        
         self.BtnExit = Button(ButtonFrame, text ='Exit', font =('arial', 20, 'bold'), height= 1, width = 10, bd =4, command  = To_Exit )
         self.BtnExit.grid(row = 0, column = 6)
 
