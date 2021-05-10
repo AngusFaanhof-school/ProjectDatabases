@@ -12,7 +12,7 @@ class Student:
         self.root.config(bg = "#0000ff")
 
 
-
+        #Created function if  user wants to Exit the Program 
         def To_Exit():
             To_Exit = tkinter.messagebox.askyesno("Student Administrative.", "Confirm if you want to exit.")
             if To_Exit > 0:
