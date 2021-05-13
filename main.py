@@ -4,7 +4,7 @@ from tkinter import *
 import tkinter.messagebox
 
 class Student:
-    #Constructor and allows me to initialize the attributes of this class. 
+    #Constructor and allows me to initialize the attributes of this class.
     def __init__(self,root):
         self.root = root
         self.root.title(" Administrative system")
@@ -12,14 +12,14 @@ class Student:
         self.root.config(bg = "#0000ff")
 
 
-        #Created function if  user wants to Exit the Program 
+        #Created function if  user wants to Exit the Program
         def To_Exit():
             To_Exit = tkinter.messagebox.askyesno("Student Administrative.", "Confirm if you want to exit.")
             if To_Exit > 0:
                 root.destroy()
                 return
 
-        
+
 
         #Creating variables and assigning them an empty value
         StdID= StringVar()
@@ -34,10 +34,10 @@ class Student:
         Nationality = StringVar()
         Email_Address = StringVar()
 
-            
-            
 
-       
+
+
+
 
 
 
@@ -48,16 +48,16 @@ class Student:
 
         Title_Frame = Frame(Basic_Frame, bd = 2, padx = 54, pady = 8, bg= "#FFFFFF", relief = GROOVE)
         Title_Frame.pack(side=TOP)
-        
+
         self.Title_label = Label(Title_Frame, font = ('arial', 40, 'bold'), text = "Administrative system", bg = "white")
         self.Title_label.grid()
-        
+
         ButtonFrame = Frame(Basic_Frame, bd=2, width = 1350, height = 70, padx=18, pady=10, bg="white", relief = GROOVE)
         ButtonFrame.pack(side=BOTTOM)
-        
+
         DataFrame = Frame(Basic_Frame, bd = 1, width = 1300, height = 400, padx=20, pady = 20, relief = GROOVE, bg="blue")
         DataFrame.pack(side = BOTTOM)
-        
+
         LeftDataFrame = LabelFrame(DataFrame, bd = 1, width =1000, height = 600, padx = 20, relief = RIDGE,bg="white", font = ('arial', 20, 'bold'), text = "Student info\n")
         LeftDataFrame.pack(side = LEFT)
 
@@ -111,8 +111,8 @@ class Student:
 
         self.btnAddDate = Button(ButtonFrame, font = ('arial', 20, 'bold'), text = "Add New", height = 1,width = 10 ,bd = 4)
         self.btnAddDate.grid(row = 0, column = 0 )
-        
-        
+
+
         self.BtnExit = Button(ButtonFrame, text ='Exit', font =('arial', 20, 'bold'), height= 1, width = 10, bd =4, command  = To_Exit )
         self.BtnExit.grid(row = 0, column = 6)
 
@@ -139,11 +139,11 @@ class Student:
 
 
 
-        
 
 
 
-        
+
+
 
 
 if __name__=='__main__':
@@ -151,15 +151,15 @@ if __name__=='__main__':
     MainWindow = Student(root)
     root.mainloop()
 
-    
 
-    
+
+
 #Created by:
 #Dini_Abdullahi
 #Orel_Israel
 #Angus
 #Myrthe
-    
+
 
 
 
