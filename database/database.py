@@ -1,5 +1,4 @@
 import mysql.connector
-from datetime import date
 
 db = mysql.connector.connect(
     host='localhost',
