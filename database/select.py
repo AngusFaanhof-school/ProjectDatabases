@@ -1,4 +1,6 @@
-def get_fields(table, db):
+import re
+
+def get_fields_list(table, db):
     fields = []
 
     cursor = db.cursor()
@@ -14,7 +16,7 @@ def get_fields(table, db):
 
 def get_all(table, db):
     data = []
-    fields = get_fields(table, db)
+    fields = get_fields_list(table, db)
 
     cursor = db.cursor()
     cursor.execute(f"select * from {table}")
@@ -33,7 +35,7 @@ def get_all(table, db):
 
 
 def get_specific(table, id, db):
-    fields = get_fields(table, db)
+    fields = get_fields_list(table, db)
 
     specific_obj = {}
 
@@ -70,3 +72,32 @@ def get_specific(table, id, db):
             specific_obj[fields[field_index]] = result[field_index]
 
     return specific_obj
+
+
+def get_form_fields_from_table(table, db):
+    cursor = db.cursor()
+
+    fields = {}
+
+    non_decimal = re.compile(r'[^\d.]+')
+
+    cursor.execute(f"desc {table}")
+    result = cursor.fetchall()
+
+    for field in result:
+        field_type = field[1].decode('utf-8')
+        length = non_decimal.sub('', field_type)
+
+        if "char" in field_type:
+            field_type = f"string-{length}"
+        elif "int" in field_type:
+            field_type = f"int-{length}"
+
+        fields[field[0]] = {
+            "type": field_type,
+            "null": False if field[2] == "NO" else True,
+            "default": field[4],
+            "text": "{FILL}"
+        }
+
+    return fields

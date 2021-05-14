@@ -1,8 +1,10 @@
+import mysql.connector
+
 def insert(statement, data, db):
     cursor = db.cursor()
 
     try:
-        cursor.execute(statement, user_data)
+        cursor.execute(statement, data)
     except mysql.connector.Error as err:
         if err.errno == 1062:
             return False

@@ -6,3 +6,8 @@ db = mysql.connector.connect(
     password='4jnstH!&GVTMA35!UTGkYDtA',
     database='school'
 )
+
+cursor = db.cursor()
+cursor.execute("show tables")
+
+TABLES = [table[0 ]for table in cursor.fetchall()]

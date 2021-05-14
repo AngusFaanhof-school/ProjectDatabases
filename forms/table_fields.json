@@ -1,0 +1,276 @@
+{
+    "administrator": {
+        "Admin_id": {
+            "type": "int-6",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        }
+    },
+    "course": {
+        "Course_name": {
+            "type": "string-30",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Course_Description": {
+            "type": "string-50",
+            "null": true,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Study": {
+            "type": "string-30",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Teacher_id": {
+            "type": "int-6",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Credits": {
+            "type": "string-2",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Study_id": {
+            "type": "string-10",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "course_id": {
+            "type": "string-5",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        }
+    },
+    "exams": {
+        "Exam_id": {
+            "type": "string-10",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Course_id": {
+            "type": "string-20",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Room": {
+            "type": "string-4",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Resit": {
+            "type": "int-4",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Date_start_time": {
+            "type": "datetime",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "exam_length": {
+            "type": "int-11",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        }
+    },
+    "results": {
+        "Exam_id": {
+            "type": "string-10",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Student_id": {
+            "type": "int-6",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Grade": {
+            "type": "string-2",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Passed": {
+            "type": "int-4",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        }
+    },
+    "students": {
+        "Student_id": {
+            "type": "int-6",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Study_id": {
+            "type": "string-5",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Start_year": {
+            "type": "int-11",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Counselor_id": {
+            "type": "int-6",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        }
+    },
+    "study": {
+        "study_name": {
+            "type": "string-30",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Description": {
+            "type": "string-255",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "language": {
+            "type": "string-30",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Number_of_years": {
+            "type": "int-11",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Study_id": {
+            "type": "string-5",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        }
+    },
+    "teachers": {
+        "Teacher_id": {
+            "type": "int-6",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Salary": {
+            "type": "int-11",
+            "null": true,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Studycounselor": {
+            "type": "int-4",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        }
+    },
+    "user": {
+        "id": {
+            "type": "int-6",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Password": {
+            "type": "string-15",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "First_name": {
+            "type": "string-20",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Last_name": {
+            "type": "string-20",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Date_of_birth": {
+            "type": "date",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Nationality": {
+            "type": "string-20",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Street": {
+            "type": "string-30",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "House_number": {
+            "type": "int-11",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Postal_code": {
+            "type": "string-6",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "City": {
+            "type": "string-20",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Phone_number": {
+            "type": "string-15",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "email": {
+            "type": "string-50",
+            "null": true,
+            "default": null,
+            "text": "{FILL}"
+        },
+        "Gender": {
+            "type": "enum('M','F')",
+            "null": false,
+            "default": null,
+            "text": "{FILL}"
+        }
+    }
+}
