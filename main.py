@@ -1,4 +1,3 @@
-#FrontEnd 
 from tkinter import *
 import tkinter.messagebox
 from tkinter import ttk
@@ -18,8 +17,8 @@ class Student_tab1:
         notebook = ttk.Notebook(self.root)
         self.TabControl0 = ttk.Frame(notebook)
         self.TabControl1 = ttk.Frame(notebook)
-        notebook.add(self.TabControl0, text = "Student Login", )
-        notebook.add(self.TabControl1, text = "Student Details", state = "disabled") # state allows me to disable the tab before the user enters the correct username and password.
+        notebook.add(self.TabControl0, text = "Student Login")
+        notebook.add(self.TabControl1, text = "Student Details",  state = "disabled")
         notebook.grid()
         
         def Student_Login():
@@ -29,7 +28,7 @@ class Student_tab1:
                 self.Username.set("")
                 self.Password.set("")
                 self.textUsername.focus()
-                self.StudentLogin_Window
+                self.StudentLogin_Window()
 
                 
             else:
@@ -81,7 +80,7 @@ class Student_Tab2:
     def __init__(self,root):
         self.root = root
         self.root.title(" Student Details")
-        self.root.geometry("1000x500")
+        self.root.geometry("1300x700")
         self.root.config(background = "white")
         
         self.UI()
@@ -104,7 +103,7 @@ class Student_Tab2:
 
         #Creating variables and assigning them an empty value
         StdID= StringVar()
-        Firstname = StringVar()
+        Fna = StringVar()
         Surname = StringVar()
         DoB =  StringVar()
         Age = StringVar()
@@ -166,12 +165,11 @@ class Student_Tab2:
 
         self.BtnExit = Button(ButtonFrame, text ='Exit', font =('arial', 20, 'bold'), height= 1, width = 10, bd =4, command  = To_Exit )
         self.BtnExit.grid(row = 0, column = 6)
+
+
 if __name__ == '__main__':
     root = Tk()
     application  = Student_tab1(root)
     root.mainloop()
-
-
-
 
 
