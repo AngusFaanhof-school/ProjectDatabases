@@ -1,8 +1,47 @@
-#The FrontEnd
-
 from tkinter import *
 import tkinter.messagebox
 
+def main():
+    master = Tk()
+    app = Login_System(master)
+
+
+class Login_System:
+    #Constructor and allows me to initialize the attributes of this class.
+    def __init__(self,root):
+        self.root = root
+        self.root.title(" Administrative system")
+        self.root.geometry("1350x750+0+0")
+        self.root.config(bg = "#0000ff")
+        self.frame = Frame(self.root, bg = 'blue')
+        self.frame.pack()
+
+        self.Username = StringVar()
+        self.password = StringVar()
+
+        self.lblTitle = Label(self.frame, text = 'Student Login', font = ('arial', 50, 'bold'), bg = 'blue' ,fg = 'black')
+        self.lblTitle.grid(row = 0, column = 0 , columnspan = 2, pady = 40)
+        
+        self.btnLogin = Button(self.frame, text = 'Login', width = 17, command = self.new_Window)
+        self.btnLogin.grid(row = 3, column = 0 )
+
+
+
+    def To_Login(self):
+        u = (self.Username.get())
+        p= (self.password.get())
+        if (u == str(628492) and p ==str(1234567)):
+            self.newWindow = Toplevel(self.root)
+            self.app = Student(self.newWindow)
+        else:
+            tkinter.messagebox.askyesno("Student Login ","You have entered the wrong details. Try again.")
+            self.Username.set("")
+            self.password.set("")
+    
+    def new_Window(self):
+        self.newWindow = Toplevel(self.root)
+        self.app = Student(self.newWindow)
+        
 class Student:
     #Constructor and allows me to initialize the attributes of this class.
     def __init__(self,root):
@@ -95,17 +134,6 @@ class Student:
         self.txtMobile = Entry(LeftDataFrame, font = ('arial', 20, 'bold'), textvariable = Mobile, width = 39)
         self.txtMobile.grid(row = 5, column = 1 )
 
-        self.lblPost_Code = Label(LeftDataFrame, font = ('arial', 20, 'bold'), text = "Surname", padx =2, pady=2, bg="white")
-        self.lblPost_Code.grid(row=6, column=0, sticky=W)
-        self.txtPost_Code = Entry(LeftDataFrame, font = ('arial', 20, 'bold'), textvariable = StdID, width = 39)
-        self.txtPost_Code.grid(row = 6, column = 1 )
-
-        self.lblsname = Label(LeftDataFrame, font = ('arial', 20, 'bold'), text = "Surname", padx =2, pady=2, bg="white")
-        self.lblsname.grid(row=7, column=0, sticky=W)
-        self.txtsname = Entry(LeftDataFrame, font = ('arial', 20, 'bold'), textvariable = StdID, width = 39)
-        self.txtsname.grid(row = 7, column = 1 )
-
-
 
 
 
@@ -117,61 +145,5 @@ class Student:
         self.BtnExit.grid(row = 0, column = 6)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__=='__main__':
-    root = Tk()
-    MainWindow = Student(root)
-    root.mainloop()
-
-
-
-
-#Created by:
-#Dini_Abdullahi
-#Orel_Israel
-#Angus
-#Myrthe
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    main()
