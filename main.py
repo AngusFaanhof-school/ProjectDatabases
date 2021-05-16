@@ -9,7 +9,7 @@ class Student_tab1:
     def __init__(self,root):
         self.root = root
         self.root.title(" Student Login")
-        self.root.geometry("1350x800")
+        self.root.geometry("1000x500")
         self.root.config(bg = "white")
         self.CreateTAB()
     
@@ -81,7 +81,7 @@ class Student_Tab2:
     def __init__(self,root):
         self.root = root
         self.root.title(" Student Details")
-        self.root.geometry("1350x800")
+        self.root.geometry("1000x500")
         self.root.config(background = "white")
         
         self.UI()
@@ -170,5 +170,8 @@ if __name__ == '__main__':
     root = Tk()
     application  = Student_tab1(root)
     root.mainloop()
+
+
+
 
 
