@@ -1,6 +1,6 @@
 from tkinter import *
 import tkinter.messagebox
-import tkinter.ttk as tkrtk
+
 from tkinter import ttk
 
 
