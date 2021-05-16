@@ -1,8 +1,6 @@
 from tkinter import *
 import tkinter.messagebox
-
 from tkinter import ttk
-
 
 
 class Student_tab1:
@@ -20,7 +18,7 @@ class Student_tab1:
         self.TabControl0 = ttk.Frame(notebook)
         self.TabControl1 = ttk.Frame(notebook)
         notebook.add(self.TabControl0, text = "Student Login", )
-        notebook.add(self.TabControl1, text = "Student Details", state = "disabled")
+        notebook.add(self.TabControl1, text = "Student Details", state = "disabled") # state allows me to disable the tab before the user enters the correct username and password.
         notebook.grid()
         
         def Student_Login():
@@ -54,8 +52,6 @@ class Student_tab1:
 
         self.LoginFrame2 = LabelFrame(self.LoginFrame, font = ('arial', 20, 'bold'), relief = GROOVE, bd =5)
         self.LoginFrame2.grid(row = 2, column =1 )
-
-
 
         self.labelUsername = Label(self.LoginFrame1, text = "Username ", font = ('arial', 20, 'bold'), bd =22)
         self.labelUsername.grid(row = 0, column = 0)
@@ -119,13 +115,6 @@ class Student_Tab2:
         Email_Address = StringVar()
 
 
-
-
-
-
-
-
-
         #Creates frame and some buttons,labels  for the main window etc. Frame works like a container and helps me organise the widgets and listboxes etc.
         Basic_Frame = Frame(self.TabControl1, bg = "#0000ff") # Have to call the tab control so that the frame fits into the right tab.
         Basic_Frame.grid()
@@ -174,21 +163,9 @@ class Student_Tab2:
         self.txtage = Entry(LeftDataFrame, font = ('arial', 20, 'bold'), textvariable = Age, width = 39)
         self.txtage.grid(row = 4, column = 1 )
 
-      
-
-
         self.BtnExit = Button(ButtonFrame, text ='Exit', font =('arial', 20, 'bold'), height= 1, width = 10, bd =4, command  = To_Exit )
         self.BtnExit.grid(row = 0, column = 6)
-
-      
-
-
-
 if __name__ == '__main__':
     root = Tk()
     application  = Student_tab1(root)
     root.mainloop()
-
-
-
-
