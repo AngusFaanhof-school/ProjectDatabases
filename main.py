@@ -1,59 +1,101 @@
 from tkinter import *
 import tkinter.messagebox
-
-def main():
-    master = Tk()
-    app = Login_System(master)
+import tkinter.ttk as tkrtk
+from tkinter import ttk
 
 
-class Login_System:
+
+class Student_tab1:
     #Constructor and allows me to initialize the attributes of this class.
     def __init__(self,root):
         self.root = root
-        self.root.title(" Administrative system")
-        self.root.geometry("1350x750+0+0")
-        self.root.config(bg = "#0000ff")
-        self.frame = Frame(self.root, bg = 'blue')
-        self.frame.pack()
+        self.root.title(" Student Login")
+        self.root.geometry("1350x800+0+0")
+        self.root.config(bg = "gainsboro")
+        self.initTabs()
+    
+    
+    def initTabs(self):
+        notebook = ttk.Notebook(self.root)
+        self.TabControl0 = ttk.Frame(notebook)
+        self.TabControl1 = ttk.Frame(notebook)
+        notebook.add(self.TabControl0, text = "Student Login", )
+        notebook.add(self.TabControl1, text = "Student Details", state = "disabled")
+        notebook.grid()
+        
+        def Student_Login():
+            u = (self.Username.get())
+            p= (self.Password.get())
+            if (u == str("abcdef") and p ==str(1234567)):
+                self.Username.set("")
+                self.Password.set("")
+                self.textUsername.focus()
+                self.Login_Window()
+
+                
+            else:
+                tkinter.messagebox.askyesno("Student Login ","You have entered the wrong details. Try again.")
+                self.Username.set("")
+                self.Password.set("")
+                self.textUsername.focus()
+       
+
+        self.LoginFrame = Frame(self.TabControl0, relief = RIDGE)
+        self.LoginFrame.pack()
 
         self.Username = StringVar()
         self.Password = StringVar()
 
-        self.lblTitle = Label(self.frame, text = 'Student Login', font = ('arial', 50, 'bold'), bg = 'blue' ,fg = 'black')
-        self.lblTitle.grid(row = 0, column = 0 , columnspan = 2, pady = 40)
+        self.lblTitle = Label(self.LoginFrame, text = '\tTab Control Student Login System\t\n', font = ('arial', 30, 'bold'))
+        self.lblTitle.grid(row = 0, columnspan=2, pady = 20)
         
-        self.btnLogin = Button(self.frame, text = 'Login', width = 17, command = self.new_Window)
-        self.btnLogin.grid(row = 3, column = 0 )
+        self.LoginFrame1 = LabelFrame(self.LoginFrame, font = ('arial', 20, 'bold'), relief = GROOVE, bd =5)
+        self.LoginFrame1.grid(row=1, column=1)
+
+        self.LoginFrame2 = LabelFrame(self.LoginFrame, font = ('arial', 20, 'bold'), relief = GROOVE, bd =5)
+        self.LoginFrame2.grid(row = 2, column =1 )
 
 
 
-    def To_Login(self):
-        u = (self.Username.get())
-        p= (self.Password.get())
-        if (u == str(628492) and p ==str(1234567)):
-            self.newWindow = Toplevel(self.root)
-            self.app = Student(self.newWindow)
-        else:
-            tkinter.messagebox.askyesno("Student Login ","You have entered the wrong details. Try again.")
-            self.Username.set("")
-            self.Password.set("")
-    
-    def new_Window(self):
-        self.newWindow = Toplevel(self.root)
-        self.app = Student(self.newWindow)
-        
-class Student:
-    #Constructor and allows me to initialize the attributes of this class.
+        self.labelUsername = Label(self.LoginFrame1, text = "Username ", font = ('arial', 20, 'bold'), bd =22)
+        self.labelUsername.grid(row = 0, column = 0)
+
+        self.textUsername = Entry(self.LoginFrame1, font = ('arial', 20, 'bold'), bd = 7, textvariable = self.Username, width = 34)
+        self.textUsername.grid(row = 0, column = 1, padx = 119)
+
+        self.lblPassword = Label(self.LoginFrame1, text = "Password ", font = ('arial', 20, 'bold'), bd =22 )
+        self.lblPassword.grid(row = 1, column  = 0)
+
+        self.textPassword = Entry(self.LoginFrame1, font = ('arial', 20, 'bold'), bd = 7, textvariable = self.Password, width = 34 )
+        self.textPassword.grid(row = 1, column = 1, columnspan = 2, pady= 30)
+
+
+        self.btnLogin = Button(self.LoginFrame2, text = 'Login', width = 17, font = ('arial', 20, 'bold'),command = Student_Login)
+        self.btnLogin.grid(row = 3, column = 0 , pady = 20, padx = 8)
+
+
+    def Login_Window(self):
+        self.TabWindow = Toplevel(self.root)
+        self.app = Student_Tab2(self.TabWindow)
+
+
+class Student_Tab2:
+
     def __init__(self,root):
         self.root = root
-        self.root.title(" Administrative system")
-        self.root.geometry("1350x750+0+0")
-        self.root.config(bg = "#0000ff")
-        self.frame = Frame(self.root, bg = 'blue')
-        self.frame.pack()
+        self.root.title(" Student Details")
+        self.root.geometry("1350x800+0+0")
+        self.root.config(background = "gainsboro")
+        self.initUI()
 
+    def initUI(self):
+        notebook = ttk.Notebook(self.root)
+        self.TabControl1 = ttk.Frame(notebook)
 
-        #Created function if  user wants to Exit the Program
+        notebook.add(self.TabControl1, text = 'Student ')
+        notebook.grid()
+    
+    #Created function if  user wants to Exit the Program
         def To_Exit():
             To_Exit = tkinter.messagebox.askyesno("Student Administrative.", "Confirm if you want to exit.")
             if To_Exit > 0:
@@ -84,7 +126,7 @@ class Student:
 
 
         #Creates frame and some buttons,labels  for the main window etc. Frame works like a container and helps me organise the widgets and listboxes etc.
-        Basic_Frame = Frame(self.root, bg = "#0000ff")
+        Basic_Frame = Frame(self.TabControl1, bg = "#0000ff")
         Basic_Frame.grid()
 
         Title_Frame = Frame(Basic_Frame, bd = 2, padx = 54, pady = 8, bg= "#FFFFFF", relief = GROOVE)
@@ -131,21 +173,18 @@ class Student:
         self.txtage = Entry(LeftDataFrame, font = ('arial', 20, 'bold'), textvariable = Age, width = 39)
         self.txtage.grid(row = 4, column = 1 )
 
-        self.lblMobile = Label(LeftDataFrame, font = ('arial', 20, 'bold'), text = "Mobile", padx =2, pady=2, bg="white")
-        self.lblMobile.grid(row=5, column=0, sticky=W)
-        self.txtMobile = Entry(LeftDataFrame, font = ('arial', 20, 'bold'), textvariable = Mobile, width = 39)
-        self.txtMobile.grid(row = 5, column = 1 )
-
-
-
-
-        self.btnAddDate = Button(ButtonFrame, font = ('arial', 20, 'bold'), text = "Add New", height = 1,width = 10 ,bd = 4)
-        self.btnAddDate.grid(row = 0, column = 0 )
+      
 
 
         self.BtnExit = Button(ButtonFrame, text ='Exit', font =('arial', 20, 'bold'), height= 1, width = 10, bd =4, command  = To_Exit )
         self.BtnExit.grid(row = 0, column = 6)
 
+      
 
-if __name__=='__main__':
-    main()
+
+
+if __name__ == '__main__':
+    root = Tk()
+    application  = Student_tab1(root)
+    root.mainloop()
+
