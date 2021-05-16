@@ -17,7 +17,7 @@ class Login_System:
         self.frame.pack()
 
         self.Username = StringVar()
-        self.password = StringVar()
+        self.Password = StringVar()
 
         self.lblTitle = Label(self.frame, text = 'Student Login', font = ('arial', 50, 'bold'), bg = 'blue' ,fg = 'black')
         self.lblTitle.grid(row = 0, column = 0 , columnspan = 2, pady = 40)
@@ -29,14 +29,14 @@ class Login_System:
 
     def To_Login(self):
         u = (self.Username.get())
-        p= (self.password.get())
+        p= (self.Password.get())
         if (u == str(628492) and p ==str(1234567)):
             self.newWindow = Toplevel(self.root)
             self.app = Student(self.newWindow)
         else:
             tkinter.messagebox.askyesno("Student Login ","You have entered the wrong details. Try again.")
             self.Username.set("")
-            self.password.set("")
+            self.Password.set("")
     
     def new_Window(self):
         self.newWindow = Toplevel(self.root)
@@ -49,6 +49,8 @@ class Student:
         self.root.title(" Administrative system")
         self.root.geometry("1350x750+0+0")
         self.root.config(bg = "#0000ff")
+        self.frame = Frame(self.root, bg = 'blue')
+        self.frame.pack()
 
 
         #Created function if  user wants to Exit the Program
