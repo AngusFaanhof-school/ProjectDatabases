@@ -10,12 +10,12 @@ class Student_tab1:
     def __init__(self,root):
         self.root = root
         self.root.title(" Student Login")
-        self.root.geometry("1350x800+0+0")
-        self.root.config(bg = "gainsboro")
-        self.initTabs()
+        self.root.geometry("1350x800")
+        self.root.config(bg = "white")
+        self.CreateTAB()
     
     
-    def initTabs(self):
+    def CreateTAB(self):
         notebook = ttk.Notebook(self.root)
         self.TabControl0 = ttk.Frame(notebook)
         self.TabControl1 = ttk.Frame(notebook)
@@ -30,7 +30,7 @@ class Student_tab1:
                 self.Username.set("")
                 self.Password.set("")
                 self.textUsername.focus()
-                self.Login_Window()
+                self.StudentLogin_Window
 
                 
             else:
@@ -46,7 +46,7 @@ class Student_tab1:
         self.Username = StringVar()
         self.Password = StringVar()
 
-        self.lblTitle = Label(self.LoginFrame, text = '\tTab Control Student Login System\t\n', font = ('arial', 30, 'bold'))
+        self.lblTitle = Label(self.LoginFrame, text = '\t Student Administrative Login System\t\n', font = ('arial', 30, 'bold'))
         self.lblTitle.grid(row = 0, columnspan=2, pady = 20)
         
         self.LoginFrame1 = LabelFrame(self.LoginFrame, font = ('arial', 20, 'bold'), relief = GROOVE, bd =5)
@@ -74,7 +74,7 @@ class Student_tab1:
         self.btnLogin.grid(row = 3, column = 0 , pady = 20, padx = 8)
 
 
-    def Login_Window(self):
+    def StudentLogin_Window(self):
         self.TabWindow = Toplevel(self.root)
         self.app = Student_Tab2(self.TabWindow)
 
@@ -84,11 +84,12 @@ class Student_Tab2:
     def __init__(self,root):
         self.root = root
         self.root.title(" Student Details")
-        self.root.geometry("1350x800+0+0")
-        self.root.config(background = "gainsboro")
-        self.initUI()
+        self.root.geometry("1350x800")
+        self.root.config(background = "white")
+        
+        self.UI()
 
-    def initUI(self):
+    def UI(self):
         notebook = ttk.Notebook(self.root)
         self.TabControl1 = ttk.Frame(notebook)
 
@@ -126,7 +127,7 @@ class Student_Tab2:
 
 
         #Creates frame and some buttons,labels  for the main window etc. Frame works like a container and helps me organise the widgets and listboxes etc.
-        Basic_Frame = Frame(self.TabControl1, bg = "#0000ff")
+        Basic_Frame = Frame(self.TabControl1, bg = "#0000ff") # Have to call the tab control so that the frame fits into the right tab.
         Basic_Frame.grid()
 
         Title_Frame = Frame(Basic_Frame, bd = 2, padx = 54, pady = 8, bg= "#FFFFFF", relief = GROOVE)
@@ -187,4 +188,7 @@ if __name__ == '__main__':
     root = Tk()
     application  = Student_tab1(root)
     root.mainloop()
+
+
+
 
