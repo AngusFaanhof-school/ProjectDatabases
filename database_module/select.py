@@ -1,6 +1,6 @@
 import re
 
-def get_fields_list(table, db):
+def get_fields(table, db):
     fields = []
 
     cursor = db.cursor()
@@ -16,7 +16,7 @@ def get_fields_list(table, db):
 
 def get_all(table, db):
     data = []
-    fields = get_fields_list(table, db)
+    fields = get_fields(table, db)
 
     cursor = db.cursor()
     cursor.execute(f"select * from {table}")
@@ -35,7 +35,7 @@ def get_all(table, db):
 
 
 def get_specific(table, id, db):
-    fields = get_fields_list(table, db)
+    fields = get_fields(table, db)
 
     specific_obj = {}
 
