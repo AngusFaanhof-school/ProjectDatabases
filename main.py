@@ -2,6 +2,8 @@ from tkinter import *
 import tkinter.messagebox
 from tkinter import ttk
 
+from database_module.auth import login
+from database import db
 
 #Username  = abcdef, #Password = 1234567 
 class Student_tab1:
@@ -25,7 +27,8 @@ class Student_tab1:
         def Student_Login():
             u = (self.Username.get())
             p= (self.Password.get())
-            if (u == str("abcdef") and p ==str(1234567)):
+
+            if login(u, p, db):
                 self.Username.set("")
                 self.Password.set("")
                 self.textUsername.focus()
