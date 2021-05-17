@@ -74,30 +74,22 @@ def get_specific(table, id, db):
     return specific_obj
 
 
-def get_form_fields_from_table(table, db):
+def get_all_from_field(table, field, id, db):
+    fields = get_fields(table, db)
+
+    objects = []
+
     cursor = db.cursor()
 
-    fields = {}
+    cursor.execute(f"select * from {table} where {field} = {id}")
 
-    non_decimal = re.compile(r'[^\d.]+')
-
-    cursor.execute(f"desc {table}")
     result = cursor.fetchall()
 
-    for field in result:
-        field_type = field[1].decode('utf-8')
-        length = non_decimal.sub('', field_type)
+    if result:
+        for r in result:
+            temp_obj = {}
+            for field_index in range(0, len(r)):
+                temp_obj[fields[field_index]] = r[field_index]
+            objects.append(temp_obj)
 
-        if "char" in field_type:
-            field_type = f"string-{length}"
-        elif "int" in field_type:
-            field_type = f"int-{length}"
-
-        fields[field[0]] = {
-            "type": field_type,
-            "null": False if field[2] == "NO" else True,
-            "default": field[4],
-            "text": "{FILL}"
-        }
-
-    return fields
+    return objects
