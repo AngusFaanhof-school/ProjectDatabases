@@ -3,6 +3,7 @@ import tkinter.messagebox
 from tkinter import ttk
 
 
+#Username  = abcdef, #Password = 1234567 
 class Student_tab1:
     #Constructor and allows me to initialize the attributes of this class.
     def __init__(self,root):
