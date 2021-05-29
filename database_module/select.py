@@ -74,21 +74,35 @@ def get_specific(table, id, db):
     return specific_obj
 
 
-def get_all_from_field(table, field, id, db):
-    fields = get_fields(table, db)
-
+def get_all_from_field(table, field, db):
     objects = []
 
     cursor = db.cursor()
 
-    cursor.execute(f"select * from {table} where {field} = {id}")
+    cursor.execute(f"select {field} from {table}")
+    result = cursor.fetchall()
 
+    if result:
+        for r in result:
+            objects.append(r[0])
+
+    return objects
+
+
+def get_all_from_fields(table, fields, db):
+    objects = []
+
+    cursor = db.cursor()
+
+    field = ", ".join(fields)
+
+    cursor.execute(f"select {field} from {table}")
     result = cursor.fetchall()
 
     if result:
         for r in result:
             temp_obj = {}
-            for field_index in range(0, len(r)):
+            for field_index in range(0, len(fields)):
                 temp_obj[fields[field_index]] = r[field_index]
             objects.append(temp_obj)
 

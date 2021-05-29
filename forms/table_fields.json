@@ -3,7 +3,7 @@
         "Admin_id": {
             "type": "int-6",
             "null": false,
-            "default": null,
+            "key": "PRI",
             "text": "{FILL}"
         }
     },
@@ -11,43 +11,43 @@
         "Course_name": {
             "type": "string-30",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Course_Description": {
             "type": "string-50",
             "null": true,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Study": {
             "type": "string-30",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Teacher_id": {
             "type": "int-6",
             "null": false,
-            "default": null,
+            "key": "MUL",
             "text": "{FILL}"
         },
         "Credits": {
             "type": "string-2",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Study_id": {
             "type": "string-10",
             "null": false,
-            "default": null,
+            "key": "MUL",
             "text": "{FILL}"
         },
         "course_id": {
             "type": "string-5",
             "null": false,
-            "default": null,
+            "key": "PRI",
             "text": "{FILL}"
         }
     },
@@ -55,37 +55,37 @@
         "Exam_id": {
             "type": "string-10",
             "null": false,
-            "default": null,
+            "key": "PRI",
             "text": "{FILL}"
         },
         "Course_id": {
             "type": "string-20",
             "null": false,
-            "default": null,
+            "key": "MUL",
             "text": "{FILL}"
         },
         "Room": {
             "type": "string-4",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Resit": {
-            "type": "int-4",
+            "type": "bool",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Date_start_time": {
             "type": "datetime",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "exam_length": {
             "type": "int-11",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         }
     },
@@ -93,25 +93,25 @@
         "Exam_id": {
             "type": "string-10",
             "null": false,
-            "default": null,
+            "key": "PRI",
             "text": "{FILL}"
         },
         "Student_id": {
             "type": "int-6",
             "null": false,
-            "default": null,
+            "key": "PRI",
             "text": "{FILL}"
         },
         "Grade": {
             "type": "string-2",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Passed": {
-            "type": "int-4",
+            "type": "bool",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         }
     },
@@ -119,25 +119,25 @@
         "Student_id": {
             "type": "int-6",
             "null": false,
-            "default": null,
+            "key": "PRI",
             "text": "{FILL}"
         },
         "Study_id": {
             "type": "string-5",
             "null": false,
-            "default": null,
+            "key": "MUL",
             "text": "{FILL}"
         },
         "Start_year": {
             "type": "int-11",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Counselor_id": {
             "type": "int-6",
             "null": false,
-            "default": null,
+            "key": "MUL",
             "text": "{FILL}"
         }
     },
@@ -145,31 +145,31 @@
         "study_name": {
             "type": "string-30",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Description": {
             "type": "string-255",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "language": {
             "type": "string-30",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Number_of_years": {
             "type": "int-11",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Study_id": {
             "type": "string-5",
             "null": false,
-            "default": null,
+            "key": "PRI",
             "text": "{FILL}"
         }
     },
@@ -177,19 +177,19 @@
         "Teacher_id": {
             "type": "int-6",
             "null": false,
-            "default": null,
+            "key": "PRI",
             "text": "{FILL}"
         },
         "Salary": {
             "type": "int-11",
             "null": true,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Studycounselor": {
-            "type": "int-4",
+            "type": "bool",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         }
     },
@@ -197,79 +197,79 @@
         "id": {
             "type": "int-6",
             "null": false,
-            "default": null,
+            "key": "PRI",
             "text": "{FILL}"
         },
         "Password": {
             "type": "string-15",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "First_name": {
             "type": "string-20",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Last_name": {
             "type": "string-20",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Date_of_birth": {
             "type": "date",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Nationality": {
             "type": "string-20",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Street": {
             "type": "string-30",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "House_number": {
             "type": "int-11",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Postal_code": {
             "type": "string-6",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "City": {
             "type": "string-20",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Phone_number": {
             "type": "string-15",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "email": {
             "type": "string-50",
             "null": true,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         },
         "Gender": {
             "type": "enum('M','F')",
             "null": false,
-            "default": null,
+            "key": "",
             "text": "{FILL}"
         }
     }

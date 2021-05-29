@@ -5,7 +5,11 @@ def insert(statement, data, db):
 
     try:
         cursor.execute(statement, data)
+        print("Succes")
     except mysql.connector.Error as err:
+        print("Error: ", err)
+        print("Statement: ", statement)
+        print("Data: ", data)
         if err.errno == 1062:
             return False
 
