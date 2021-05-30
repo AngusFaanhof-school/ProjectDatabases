@@ -4,7 +4,7 @@ import json
 import datetime
 
 from database_module.helpers import check_pk
-from database_module.select import get_all, get_all_from_field, get_all_from_fields
+from database_module.select import get_all, get_all_from_field, get_all_from_fields, get_all_from_field_with_value
 from database import db
 
 
@@ -85,6 +85,18 @@ def get_fk_exam_dropdown(root):
     return tk.OptionMenu(root, var, *options), var
 
 
+def get_fk_teacher_exams_dropdown(root, teacher_id):
+    rows = get_all_from_field_with_value("course", "Teacher_id", teacher_id, db)
+    courses = [row["course_id"] for row in rows]
+
+    exams = []
+    for course in courses:
+        exams += [row["Exam_id"] for row in get_all_from_field_with_value("exams", "Course_id", course, db)]
+
+    var = tk.StringVar(value=exams[0])
+    return tk.OptionMenu(root, var, *exams), var
+
+
 def get_fk_course_dropdown(root):
     rows = get_all("course", db)
     text_options = [row["Course_name"] for row in rows]
@@ -97,7 +109,6 @@ def get_fk_course_dropdown(root):
         id_var.set(ids[text_options.index(x)])
 
     return tk.OptionMenu(root, str_var, *text_options, command=option_change), id_var
-
 
 def get_entry(field_type, root):
     var = tk.StringVar()
@@ -176,7 +187,7 @@ f = open("forms/table_fields.json", "r")
 all_table_fields = json.load(f)
 
 class Form:
-    def __init__(self, table, pk_field, insert_function, root, fk_fields):
+    def __init__(self, table, pk_field, insert_function, root, fk_fields, teacher_id=None):
         self.table = table
         self.pk_field = pk_field
         self.insert_function = insert_function
@@ -186,6 +197,7 @@ class Form:
         self.fields = list(self.table_fields.keys())
         self.error_msg = tk.StringVar()
         self.fk_fields = fk_fields
+        self.teacher_id = teacher_id
 
 
     def submit(self):
@@ -207,6 +219,7 @@ class Form:
             return
 
         if self.insert_function(value_list, db):
+            self.error_msg.set("Submitted successfully")
             print("submited")
 
 
@@ -221,6 +234,7 @@ class Form:
             label_text.set(field)
             tk.Label(field_frame, textvariable=label_text).pack(side="left")
 
+
             if "user" in self.fk_fields and (field == "Teacher_id" or field == "Student_id" or field == "Admin_id"):
                 field_entry = get_fk_user_dropdown(field_frame)
             elif "study" in self.fk_fields and field == "Study_id":
@@ -229,6 +243,8 @@ class Form:
                 field_entry = get_fk_teacher_dropdown(field_frame)
             elif "course" in self.fk_fields and field == "Course_id":
                 field_entry = get_fk_course_dropdown(field_frame)
+            elif self.teacher_id and field == "Exam_id":
+                field_entry = get_fk_teacher_exams_dropdown(field_frame, self.teacher_id)
             elif "exam" in self.fk_fields and field == "Exam_id":
                 field_entry = get_fk_exam_dropdown(field_frame)
             elif "student" in self.fk_fields and field == "Student_id":

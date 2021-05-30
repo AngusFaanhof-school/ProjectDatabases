@@ -107,3 +107,24 @@ def get_all_from_fields(table, fields, db):
             objects.append(temp_obj)
 
     return objects
+
+
+def get_all_from_field_with_value(table, field, value, db):
+    objects = []
+
+    fields = get_fields(table, db)
+
+    cursor = db.cursor()
+
+    cursor.execute(f"select * from {table} where {field} = %s", (value, ))
+    result = cursor.fetchall()
+
+    if result:
+        for row in result:
+            tempobj = {}
+            for field_index in range(len(fields)):
+                tempobj[fields[field_index]] = row[field_index]
+
+            objects.append(tempobj)
+
+    return objects

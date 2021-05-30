@@ -49,8 +49,9 @@ field_dict = {
 
 # TODO: better datetime for exams
 
-root = tk.Tk()
-# field = "results"
+# root = tk.Tk()
+# field = "students"
+# print(field_dict[field]["fk"])
 # user_form = Form(field, field_dict[field]["pk"], field_dict[field]["function"], root, field_dict[field]["fk"])
 # user_form.get_frame().pack()
-root.mainloop()
+# root.mainloop()
