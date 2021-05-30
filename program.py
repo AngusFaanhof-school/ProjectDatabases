@@ -4,6 +4,8 @@ from database import db
 from database_module.auth import login, get_role
 from admin_dashboard import AdminDashboard
 from teacher_dashboard import TeacherDashboard
+from student_dashboard import StudentDashboard
+
 session = {
     "username": "",
     "auth": ""
@@ -16,12 +18,12 @@ def succes_login():
     global current_frame
     current_frame.pack_forget()
     if session["auth"] == "Administrator":
-        adb = AdminDashboard(root)
-        current_frame = adb.get_frame()
+        dashboard = AdminDashboard(root)
     elif session["auth"] == "Teacher":
-        tdb = TeacherDashboard(root, session["username"])
-        current_frame = tdb.get_frame()
-
+        dashboard = TeacherDashboard(root, session["username"])
+    elif session["auth"] == "Student":
+        dashboard = StudentDashboard(root, session["username"])
+    current_frame = dashboard.get_frame()
     current_frame.pack()
 
 
@@ -36,6 +38,7 @@ def get_login_frame():
     tk.Label(current_frame,text="Password").grid(row=1, column=0)
     password = tk.StringVar()
     tk.Entry(current_frame, textvariable=password, show='*').grid(row=1, column=1)
+
     def login_try():
         error_msg.set("")
         if login(username.get(), password.get(), db):

@@ -295,35 +295,68 @@ def teacher_students_results(root, teacher_id):
     return field_frame
 
 
-# def teacher_course_results(root, teacher_id):
-#     field_list = ["Student_id", "Student_name", "Exam_id", "Grade", "Passed"]
+def student_courses(root, student_id):
+    field_list = ["course_id", "Course_name", "Course_Description", "Teacher_name", "Credits"]
 
-#     teacher_students = select.get_all_from_field_with_value("students", "Counselor_id", teacher_id, db)
-#     teacher_student_ids = [student["Student_id"] for student in teacher_students]
+    study = select.get_specific("students", student_id, db)["Study_id"]
+    courses = select.get_all_from_field_with_value("course", "Study_id", study, db)
 
-#     field_frame = tk.Frame(root)
+    field_frame = tk.Frame(root)
 
-#     for column in range(len(field_list)):
-#         add_table_cell(field_frame, field_list[column], 0, column)
+    for column in range(len(field_list)):
+        add_table_cell(field_frame, field_list[column], 0, column)
+
+    for row in range(len(courses)):
+        teacher = select.get_specific("user", courses[row]["Teacher_id"], db)
+        for column in range(len(field_list)):
+            if field_list[column] == "Teacher_name":
+                text = "{} {}".format(teacher["First_name"], teacher["Last_name"])
+            else:
+                text = courses[row][field_list[column]]
+            add_table_cell(field_frame, text, row+1, column)
 
 
-#     teacher_students_results = {}
-#     for student_id in teacher_student_ids:
-#         teacher_students_results[student_id] = select.get_all_from_field_with_value("results", "Student_id", student_id, db)
+    return field_frame
 
-#     current_row = 1
-#     for student in teacher_students_results:
-#         student_user = select.get_specific("user", student, db)
 
-#         for row in range(len(teacher_students_results[student])):
-#             for column in range(len(field_list)):
-#                 if field_list[column] == "Student_name":
-#                     text = student_user["First_name"] + " " + student_user["Last_name"]
-#                 elif field_list[column] == "Passed":
-#                     text = "Yes" if teacher_students_results[student][row][field_list[column]] else "No"
-#                 else:
-#                     text = teacher_students_results[student][row][field_list[column]]
-#                 add_table_cell(field_frame, text, current_row, column)
-#             current_row += 1
+def student_results(root, student_id):
+    field_list = ["Exam_id", "Grade", "Passed"]
 
-#     return field_frame
+    field_frame = tk.Frame(root)
+
+    results = select.get_all_from_field_with_value("results", "Student_id", student_id, db)
+
+    for column in range(len(field_list)):
+         add_table_cell(field_frame, field_list[column], 0, column)
+
+    for row in range(len(results)):
+        for column in range(len(field_list)):
+            if field_list[column] == "Passed":
+                text = "Yes" if results[row][field_list[column]] else "No"
+            else:
+                text = results[row][field_list[column]]
+            add_table_cell(field_frame, text, row+1, column)
+
+    return field_frame
+
+
+def student_study_counselor(root, student_id):
+    field_list = ["teacher_name", "Phone_number", "email"]
+
+    field_frame = tk.Frame(root)
+
+    counselor = select.get_specific("students", student_id, db)["Counselor_id"]
+    teacher = select.get_specific("user", counselor, db)
+
+    for column in range(len(field_list)):
+        add_table_cell(field_frame, field_list[column], 0, column)
+
+
+    for column in range(len(field_list)):
+        if field_list[column] == "teacher_name":
+            text = "{} {}".format(teacher["First_name"], teacher["Last_name"])
+        else:
+            text = teacher[field_list[column]]
+        add_table_cell(field_frame, text, 1, column)
+
+    return field_frame

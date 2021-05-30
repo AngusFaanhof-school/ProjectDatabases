@@ -1,9 +1,6 @@
 import tkinter as tk
-from database_module import select
 
 import show
-
-from database import db
 
 from inserts import field_dict
 from insert_form import Form
@@ -60,7 +57,7 @@ class TeacherDashboard:
         tk.Label(self.main, text="Show").grid(row=0, column=1)
         tk.Button(self.main, text="Show courses", command=show_courses).grid(row=1, column=1)
         tk.Button(self.main, text="Show all students", command=show_all_students).grid(row=2, column=1)
-        tk.Button(self.main, text="Show study councler students", command=show_teacher_students).grid(row=3, column=1)
-        tk.Button(self.main, text="Show study councler students results", command=show_teacher_students_results).grid(row=4, column=1)
+        tk.Button(self.main, text="Show study councelor students", command=show_teacher_students).grid(row=3, column=1)
+        tk.Button(self.main, text="Show study councelor students results", command=show_teacher_students_results).grid(row=4, column=1)
 
         return self.main
