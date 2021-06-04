@@ -1,17 +1,18 @@
 from tkinter import *
 import tkinter.messagebox
 from tkinter import ttk
-
 from database_module.auth import login
 from database import db
 
-#Username  = abcdef, #Password = 1234567 
+
+
+
 class Student_tab1:
     #Constructor and allows me to initialize the attributes of this class.
     def __init__(self,root):
         self.root = root
-        self.root.title(" Student Login")
-        self.root.geometry("1000x500")
+        self.root.title("Student Login")
+        self.root.geometry("1350x750+0+0")
         self.root.config(bg = "white")
         self.CreateTAB()
     
@@ -28,7 +29,7 @@ class Student_tab1:
             u = (self.Username.get())
             p= (self.Password.get())
 
-            if login(u, p, db):
+            if login(u, p , db):
                 self.Username.set("")
                 self.Password.set("")
                 self.textUsername.focus()
@@ -83,8 +84,8 @@ class Student_Tab2:
 
     def __init__(self,root):
         self.root = root
-        self.root.title(" Student Details")
-        self.root.geometry("1300x700")
+        self.root.title("Student Details")
+        self.root.geometry("1350x900+0+0")
         self.root.config(background = "white")
         
         self.UI()
@@ -126,7 +127,7 @@ class Student_Tab2:
         Title_Frame = Frame(Basic_Frame, bd = 2, padx = 54, pady = 8, bg= "#FFFFFF", relief = GROOVE)
         Title_Frame.pack(side=TOP)
 
-        self.Title_label = Label(Title_Frame, font = ('arial', 40, 'bold'), text = "Administrative system", bg = "white")
+        self.Title_label = Label(Title_Frame, font = ('arial', 20, 'bold'), text = "Administrative system", bg = "white")
         self.Title_label.grid()
 
         ButtonFrame = Frame(Basic_Frame, bd=2, width = 1350, height = 70, padx=18, pady=10, bg="white", relief = GROOVE)
@@ -171,9 +172,17 @@ class Student_Tab2:
         self.BtnExit.grid(row = 0, column = 6)
 
 
+
+        scrollbar = Scrollbar(RightDataFrame)
+        scrollbar.grid(row = 0, column = 1, sticky = 'ns')
+
+        student_list = Listbox(RightDataFrame, width = 41, height = 16, font=('arial', 12), yscrollcommand= scrollbar.set)
+        student_list.grid(row = 0, columnn = 0, padx = 8)
+        scrollbar.config(command = student_list.yview)
+
+
 if __name__ == '__main__':
     root = Tk()
     application  = Student_tab1(root)
     root.mainloop()
-
 
