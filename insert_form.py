@@ -169,7 +169,10 @@ def get_values(string_vars, table_fields):
         if table_fields[field]["type"] == "date":
             values[field] = datetime.datetime.strptime(string_vars[field].get(), "%d/%m/%Y")
         elif table_fields[field]["type"] == "datetime":
-            values[field] = datetime.datetime.strptime(string_vars[field][0].get() + string_vars[field][1].get(), "%d/%m/%Y%H:%M:%S")
+            try:
+                values[field] = datetime.datetime.strptime(string_vars[field][0].get() + string_vars[field][1].get(), "%d/%m/%Y%H:%M:%S")
+            except:
+                values[field] = ""
         else:
             values[field] = string_vars[field].get()
 
@@ -208,21 +211,18 @@ class Form:
         value_list = [values[field] for field in self.fields]
 
         if not validate_values(values, self.table_fields):
-            self.error_msg.set("Please fill in all fields")
-            print("Fill fields")
+            self.error_msg.set("Please fill in all fields and check the values")
             return
 
         pk_values = values[self.pk_field] if type(self.pk_field) == type("") else (values[self.pk_field[0]], values[self.pk_field[1]])
 
         if check_pk(self.table, pk_values, db):
             self.error_msg.set("ID already in use")
-            print("ID in use")
             return
 
         if self.insert_function(value_list, db):
             self.error_msg.set("Submitted successfully")
             self.error_label.configure(fg="Green")
-            print("submited")
 
 
     def get_frame(self):
