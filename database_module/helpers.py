@@ -35,3 +35,12 @@ def get_fields_overview(table, db):
 
     cursor.execute(f"desc {table}")
     return cursor.fetchall()
+
+
+def get_full_name(id, db):
+    cursor = db.cursor()
+
+    cursor.execute("select First_name, Last_name from user where id = %s", (id, ))
+    result = cursor.fetchone()
+
+    return " ".join(result)

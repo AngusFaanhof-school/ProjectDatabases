@@ -202,6 +202,7 @@ class Form:
 
     def submit(self):
         self.error_msg.set("")
+        self.error_label.config(fg="red")
         values = get_values(self.string_vars, self.table_fields)
 
         value_list = [values[field] for field in self.fields]
@@ -214,25 +215,26 @@ class Form:
         pk_values = values[self.pk_field] if type(self.pk_field) == type("") else (values[self.pk_field[0]], values[self.pk_field[1]])
 
         if check_pk(self.table, pk_values, db):
-            self.error_msg.set("Id already in use")
+            self.error_msg.set("ID already in use")
             print("ID in use")
             return
 
         if self.insert_function(value_list, db):
             self.error_msg.set("Submitted successfully")
+            self.error_label.configure(fg="Green")
             print("submited")
 
 
     def get_frame(self):
         fields_frame = tk.Frame(self.root)
-
+        row = 0
         for field in self.fields:
             field_frame = tk.Frame(fields_frame)
 
 
             label_text = tk.StringVar()
-            label_text.set(field)
-            tk.Label(field_frame, textvariable=label_text).pack(side="left")
+            label_text.set(all_table_fields[self.table][field]["text"])
+            tk.Label(field_frame, textvariable=label_text).grid(row=row, column=0)
 
 
             if "user" in self.fk_fields and (field == "Teacher_id" or field == "Student_id" or field == "Admin_id"):
@@ -252,12 +254,14 @@ class Form:
             else:
                 field_entry = get_entry(self.table_fields[field]["type"], field_frame)
 
-            field_entry[0].pack(side="right")
+            field_entry[0].grid(row=row, column=1)
             self.string_vars[field] = field_entry[1]
 
             field_frame.pack()
+            row +=1
 
-        tk.Label(fields_frame, textvariable=self.error_msg, fg="red").pack()
+        self.error_label = tk.Label(fields_frame, textvariable=self.error_msg, fg="red")
+        self.error_label.pack()
         tk.Button(fields_frame, text="Submit", command=self.submit).pack()
 
         return fields_frame
